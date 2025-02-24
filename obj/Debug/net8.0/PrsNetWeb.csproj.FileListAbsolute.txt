@@ -281,3 +281,4 @@ C:\repos\maxbootcamp\PRS-repos\PrsNetWeb\bin\Debug\net8.0\runtimes\win\lib\net7.
 C:\repos\maxbootcamp\PRS-repos\PrsNetWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\repos\maxbootcamp\PRS-repos\PrsNetWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\repos\maxbootcamp\PRS-repos\PrsNetWeb\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\repos\maxbootcamp\PRS-repos\PrsNetWeb\obj\Debug\net8.0\PrsNetWeb.sourcelink.json
