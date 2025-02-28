@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.Identity.Client;
 using PrsNetWeb.Models;
 
 namespace PrsNetWeb.Controllers
@@ -74,16 +77,66 @@ namespace PrsNetWeb.Controllers
             return NoContent();
         }
 
-        // POST: api/Requests
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Request>> PostRequest(Request request)
+
+
+        [HttpPut("submit-review/{id}")]
+        public Request SubmitRequestForReview(int id)
         {
+            //get request for id
+            var request =  _context.Requests.FirstOrDefault(r => r.Id == id);
+
+            //update request status "REVIEW"
+            request.Status = "REVIEW";
+            request.SubmittedDate = DateTime.Now;
+            // save changes
+            _context.SaveChanges();
+            //return updated request
+            return request;
+            
+
+
+        }
+
+
+
+
+
+
+
+        // POST: api/Requests
+
+        [HttpPost]
+        public async Task<ActionResult<Request>> PostRequest(RequestCreate rc)
+        {
+           
+            Request request = new Request();
+            request.UserId = rc.UserId;
+            request.Description = rc.Description;
+            request.Justification = rc.Justification;
+            request.DateNeeded = rc.DateNeeded;
+            request.DeliveryMode = rc.DeliveryMode;
+            //method to generate requestnumber  - GetReqNum
+            //to be done later
+            request.RequestNumber = rc.RequestNumber;
+            //Status string "NEW"
+            request.Status = "NEW";
+            //Total int (0.0)
+            request.Total = 0.0m;
+            //Submitted Date = currentDate
+            request.SubmittedDate = DateTime.Now;
             _context.Requests.Add(request);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRequest", new { id = request.Id }, request);
         }
+
+
+
+
+
+
+
+
 
         // DELETE: api/Requests/5
         [HttpDelete("{id}")]
@@ -100,6 +153,8 @@ namespace PrsNetWeb.Controllers
 
             return NoContent();
         }
+
+
 
         private bool RequestExists(int id)
         {

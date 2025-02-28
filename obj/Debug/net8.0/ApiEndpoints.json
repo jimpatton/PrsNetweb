@@ -246,8 +246,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "PrsNetWeb.Models.Request",
+        "Name": "rc",
+        "Type": "PrsNetWeb.Models.RequestCreate",
         "IsRequired": true
       }
     ],
@@ -325,6 +325,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PrsNetWeb.Controllers.RequestsController",
+    "Method": "SubmitRequestForReview",
+    "RelativePath": "api/Requests/submit-review/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "PrsNetWeb.Models.Request",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "PrsNetWeb.Controllers.UsersController",
@@ -434,6 +460,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PrsNetWeb.Controllers.UsersController",
+    "Method": "Login",
+    "RelativePath": "api/Users/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userLogin",
+        "Type": "PrsNetWeb.Models.UserLogin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "PrsNetWeb.Models.User",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "PrsNetWeb.Controllers.VendorsController",
