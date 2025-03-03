@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.Extensions.Configuration.UserSecrets;
 using Microsoft.Identity.Client;
 using PrsNetWeb.Models;
 
@@ -46,6 +47,33 @@ namespace PrsNetWeb.Controllers
             return request;
         }
 
+        //GET: api/Requests/list-review/userid
+        [HttpGet("list-review/{userId}")]
+
+        //public async Task<ActionResult> GetRequestForReview(int userId)
+        //{
+        //show all requests in REVIEW for a userID that is not this userId
+        //request.UserId != userid
+        //request.Status = "REVIEW"
+        public async Task<ActionResult<IEnumerable<Request>>> GetRequestForReview(int userId)
+        {
+            var requests = _context.Requests.Where(r => r.Status == "REVIEW")
+                                            .Where(r => r.UserId != userId);
+
+
+            return await requests.ToListAsync();
+        }
+
+
+
+
+        //}
+
+
+
+
+
+
         // PUT: api/Requests/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -78,24 +106,58 @@ namespace PrsNetWeb.Controllers
         }
 
 
-
         [HttpPut("submit-review/{id}")]
         public Request SubmitRequestForReview(int id)
         {
             //get request for id
-            var request =  _context.Requests.FirstOrDefault(r => r.Id == id);
-
-            //update request status "REVIEW"
-            request.Status = "REVIEW";
+            var request = _context.Requests.FirstOrDefault(r => r.Id == id);
+            if (request.Total <= 50.00m)
+                request.Status = "APPROVED";
+            else
+                //update request status "REVIEW"
+                request.Status = "REVIEW";
             request.SubmittedDate = DateTime.Now;
             // save changes
             _context.SaveChanges();
             //return updated request
             return request;
-            
-
-
         }
+
+        [HttpPut("approve/{id}")]
+        public Request ApproveRequest(int id)
+        {
+            //get request for id in REVIEW status
+            var request = _context.Requests.Where(r => r.Status == "REVIEW")
+                                           .FirstOrDefault(r => r.Id == id);
+
+            //update to APPROVED
+            request.Status = "APPROVED";
+            //save request
+
+            _context.SaveChanges();
+            return request;
+        }
+
+
+        [HttpPut("reject/{id}")]
+        public Request RejectRequest(int id, Request request)
+        {
+            //get request for id in REVIEW status
+            //var request = _context.Requests.Where(r => r.Status == "REVIEW")
+            //                               .FirstOrDefault(r => r.Id == id);
+            //reasonForRejection != null
+
+            if(request.ReasonForRejection != null)
+            {
+            //update to REJECTED
+            request.Status = "REJECTED";
+            }
+            _context.Entry(request).State = EntityState.Modified;
+            //save request
+            _context.SaveChanges();
+            return request;
+        }
+
 
 
 
@@ -108,7 +170,7 @@ namespace PrsNetWeb.Controllers
         [HttpPost]
         public async Task<ActionResult<Request>> PostRequest(RequestCreate rc)
         {
-           
+
             Request request = new Request();
             request.UserId = rc.UserId;
             request.Description = rc.Description;

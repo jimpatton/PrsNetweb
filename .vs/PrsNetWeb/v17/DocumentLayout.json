@@ -11,16 +11,20 @@
       "RelativeMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|solutionrelative:models\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|c:\\repos\\maxbootcamp\\prs-repos\\prsnetweb\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|c:\\repos\\maxbootcamp\\prs-repos\\prsnetweb\\models\\requestcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|solutionrelative:models\\requestcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|c:\\repos\\maxbootcamp\\prs-repos\\prsnetweb\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|c:\\repos\\maxbootcamp\\prs-repos\\prsnetweb\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|c:\\repos\\maxbootcamp\\prs-repos\\prsnetweb\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C5F63C3B-CCCE-4FF8-A96B-CD9E553E38FB}|PrsNetWeb.csproj|c:\\repos\\maxbootcamp\\prs-repos\\prsnetweb\\models\\userlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,11 +42,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Models\\Product.cs",
+              "ToolTip": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Models\\Product.cs",
+              "RelativeToolTip": "Models\\Product.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAA5wCsAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T21:42:19.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "RequestCreate.cs",
               "DocumentMoniker": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Models\\RequestCreate.cs",
               "RelativeDocumentMoniker": "Models\\RequestCreate.cs",
@@ -50,7 +67,8 @@
               "RelativeToolTip": "Models\\RequestCreate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T21:13:44.876Z"
+              "WhenOpened": "2025-02-25T21:13:44.876Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -60,7 +78,7 @@
               "RelativeDocumentMoniker": "Models\\Request.cs",
               "ToolTip": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Models\\Request.cs",
               "RelativeToolTip": "Models\\Request.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAgwDMAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAADwvzMAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-24T22:36:52.141Z",
               "EditorCaption": ""
@@ -71,16 +89,16 @@
               "Title": "RequestsController.cs",
               "DocumentMoniker": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Controllers\\RequestsController.cs",
               "RelativeDocumentMoniker": "Controllers\\RequestsController.cs",
-              "ToolTip": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Controllers\\RequestsController.cs",
-              "RelativeToolTip": "Controllers\\RequestsController.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAkwFkAAAAxAAAAAAAAAA==",
+              "ToolTip": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Controllers\\RequestsController.cs*",
+              "RelativeToolTip": "Controllers\\RequestsController.cs*",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAiwJoAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-22T18:34:46.607Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -92,7 +110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
@@ -104,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "UserLogin.cs",
               "DocumentMoniker": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Models\\UserLogin.cs",
               "RelativeDocumentMoniker": "Models\\UserLogin.cs",
@@ -116,15 +134,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
               "ToolTip": "C:\\repos\\maxbootcamp\\PRS-repos\\PrsNetWeb\\Controllers\\ProductsController.cs",
               "RelativeToolTip": "Controllers\\ProductsController.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T18:20:13.073Z"
+              "WhenOpened": "2025-02-27T18:20:13.073Z",
+              "EditorCaption": ""
             }
           ]
         }
