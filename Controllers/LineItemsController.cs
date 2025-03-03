@@ -63,7 +63,7 @@ namespace PrsNetWeb.Controllers
         // PUT: api/LineItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLineItem(int id, LineItem lineItem)
+        public async Task<IActionResult> PutLineItem(int id, int requestId, LineItem lineItem)
         {
             if (id != lineItem.Id)
             {
@@ -75,6 +75,7 @@ namespace PrsNetWeb.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                RecalculateTotals(lineItem.RequestId);     
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -88,6 +89,7 @@ namespace PrsNetWeb.Controllers
                 }
             }
 
+
             return NoContent();
         }
 
@@ -99,12 +101,13 @@ namespace PrsNetWeb.Controllers
             _context.LineItems.Add(lineItem);
             await _context.SaveChangesAsync();
 
+            RecalculateTotals(lineItem.RequestId);    
             return CreatedAtAction("GetLineItem", new { id = lineItem.Id }, lineItem);
         }
 
         // DELETE: api/LineItems/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLineItem(int id)
+        public async Task<IActionResult> DeleteLineItem(int id, int requestId)
         {
             var lineItem = await _context.LineItems.FindAsync(id);
             if (lineItem == null)
@@ -114,6 +117,8 @@ namespace PrsNetWeb.Controllers
 
             _context.LineItems.Remove(lineItem);
             await _context.SaveChangesAsync();
+
+            RecalculateTotals(lineItem.RequestId);         
 
             return NoContent();
         }
@@ -128,17 +133,18 @@ namespace PrsNetWeb.Controllers
             //Insert,Update, Del has already occured
             var request = _context.Requests.Find(requestId);
             //Get all MC records for this user
-            var req = _context.LineItems.Where(li => li.RequestId == requestId);
+            var req = _context.LineItems.Include(li => li.Product)
+                                        .Where(li => li.RequestId == requestId);
             //Loop through all MCs and sum the PurchasePrice values
             decimal sum = 0;
             foreach (LineItem li in req)
             {
                 sum += li.Quantity * li.Product.Price;
+            }
                 //Set sum in the User.CollectionValue property
                 request.Total = sum;
                 //Save user record
                 _context.SaveChanges();
-            }
 
 
         }

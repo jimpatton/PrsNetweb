@@ -85,6 +85,11 @@
         "IsRequired": true
       },
       {
+        "Name": "requestId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "lineItem",
         "Type": "PrsNetWeb.Models.LineItem",
         "IsRequired": true
@@ -104,6 +109,11 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "requestId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

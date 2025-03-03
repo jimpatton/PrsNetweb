@@ -178,9 +178,7 @@ namespace PrsNetWeb.Controllers
             request.Justification = rc.Justification;
             request.DateNeeded = rc.DateNeeded;
             request.DeliveryMode = rc.DeliveryMode;
-            //method to generate requestnumber  - GetReqNum
             //to be done later
-            
             //Status string "NEW"
             request.Status = "NEW";
             //Total int (0.0)
@@ -193,6 +191,7 @@ namespace PrsNetWeb.Controllers
             return CreatedAtAction("GetRequest", new { id = request.Id }, request);
         }
 
+            //method to generate requestnumber  - GetReqNum
         private string getNextRequestNumber()
         {
             // requestNumber format: R2409230011
