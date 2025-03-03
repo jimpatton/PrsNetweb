@@ -173,13 +173,14 @@ namespace PrsNetWeb.Controllers
 
             Request request = new Request();
             request.UserId = rc.UserId;
+            request.RequestNumber = getNextRequestNumber();
             request.Description = rc.Description;
             request.Justification = rc.Justification;
             request.DateNeeded = rc.DateNeeded;
             request.DeliveryMode = rc.DeliveryMode;
             //method to generate requestnumber  - GetReqNum
             //to be done later
-            request.RequestNumber = rc.RequestNumber;
+            
             //Status string "NEW"
             request.Status = "NEW";
             //Total int (0.0)
@@ -192,7 +193,35 @@ namespace PrsNetWeb.Controllers
             return CreatedAtAction("GetRequest", new { id = request.Id }, request);
         }
 
+        private string getNextRequestNumber()
+        {
+            // requestNumber format: R2409230011
+            // 11 chars, 'R' + YYMMDD + 4 digit # w/ leading zeros
+            string requestNbr = "R";
+            // add YYMMDD string
+            DateOnly today = DateOnly.FromDateTime(DateTime.Now);
+            requestNbr += today.ToString("yyMMdd");
+            // get maximum request number from db
+            string maxReqNbr = _context.Requests.Max(r => r.RequestNumber);
+            String reqNbr = "";
+            if (maxReqNbr != null)
+            {
+                // get last 4 characters, convert to number
+                String tempNbr = maxReqNbr.Substring(7);
+                int nbr = Int32.Parse(tempNbr);
+                nbr++;
+                // pad w/ leading zeros
+                reqNbr += nbr;
+                reqNbr = reqNbr.PadLeft(4, '0');
+            }
+            else
+            {
+                reqNbr = "0001";
+            }
+            requestNbr += reqNbr;
+            return requestNbr;
 
+        }
 
 
 

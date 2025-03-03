@@ -45,6 +45,21 @@ namespace PrsNetWeb.Controllers
             return lineItem;
         }
 
+        [HttpGet("lines-for-req/{requestId}")]
+        public List<LineItem> LineItemsForRequest(int requestId)
+        {
+
+            List<LineItem> lineItem = _context.LineItems.Where(lineItem => lineItem.RequestId == requestId).ToList();
+
+            return lineItem;
+
+        }
+
+
+
+
+
+
         // PUT: api/LineItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -106,6 +121,26 @@ namespace PrsNetWeb.Controllers
         private bool LineItemExists(int id)
         {
             return _context.LineItems.Any(e => e.Id == id);
+        }
+
+        private void RecalculateTotals(int requestId)
+        {
+            //Insert,Update, Del has already occured
+            var request = _context.Requests.Find(requestId);
+            //Get all MC records for this user
+            var req = _context.LineItems.Where(li => li.RequestId == requestId);
+            //Loop through all MCs and sum the PurchasePrice values
+            decimal sum = 0;
+            foreach (LineItem li in req)
+            {
+                sum += li.Quantity * li.Product.Price;
+                //Set sum in the User.CollectionValue property
+                request.Total = sum;
+                //Save user record
+                _context.SaveChanges();
+            }
+
+
         }
     }
 }
